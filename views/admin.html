@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../shared/styles/bootstrap.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="icon" type="image/x-icon" href="../shared/images/favicon.ico" />
+
+    <link rel="stylesheet" href="../shared/styles/reset.css" />
+    <link rel="stylesheet" href="./styles/admin.css" />
+
+    <title>Administracion</title>
+  </head>
+  <body>
+    <nav id="top__navbar">
+      <section id="top__navigation">
+        <div>
+          <a href="/index.html" class="top__nav_grid_item">Minorista</a>
+        </div>
+        <div>
+          <a href="#">
+            <img
+              src="../shared/images/logo.jpg"
+              class="top__nav_grid_item"
+              id="top__nav_logo"
+            />
+          </a>
+        </div>
+        <div>
+          <a href="/index.html#mayorista" class="top__nav_grid_item"
+            >Mayorista</a
+          >
+        </div>
+      </section>
+    </nav>
+    <div style="padding-top: 70px"></div>
+
+    <div class="alert alert-danger" id="alert_error" role="alert"></div>
+    <div class="alert alert-success" id="alert_success" role="alert"></div>
+
+    <section id="crud__selects_container">
+      <div class="crud__select">
+        <label for="crud__label_category"></label>
+        <select
+          name="Categoria"
+          class="form-control crud__select_specific"
+          id="crud__label_category"
+          onchange="showElement(event)"
+        >
+          <option value="category">Categoria</option>
+          <option value="category__create">Crear</option>
+          <option value="category__edit">Editar</option>
+          <option value="category__delete">Eliminar</option>
+          <option value="category__list">Listar</option>
+        </select>
+      </div>
+      <div class="crud__select">
+        <label for="crud__label_product"></label>
+        <select
+          name="Producto"
+          class="form-control crud__select_specific"
+          id="crud__label_product"
+          onchange="showElement(event)"
+        >
+          <option value="product">Producto</option>
+          <option value="product__create">Crear</option>
+          <option value="product__edit">Editar</option>
+          <option value="product__delete">Eliminar</option>
+          <option value="product__list">Listar</option>
+        </select>
+      </div>
+      <div class="crud__select">
+        <label for="crud__label_contact"></label>
+        <select
+          name="Contacto"
+          class="form-control crud__select_specific"
+          id="crud__label_contact"
+          onchange="showElement(event)"
+        >
+          <option value="contact">Contacto</option>
+          <option value="contact__edit">Editar</option>
+        </select>
+      </div>
+      <div class="crud__select" id="crud__select_user">
+        <label for="crud__label_user"></label>
+        <select
+          name="Usuario"
+          class="form-control crud__select_specific"
+          id="crud__label_user"
+          onchange="showElement(event)"
+        >
+          <option value="user">Usuario</option>
+          <option value="user__create">Crear</option>
+          <option value="user__edit">Editar</option>
+          <option value="user__delete">Eliminar</option>
+          <option value="user__list">Listar</option>
+        </select>
+      </div>
+    </section>
+
+    <section id="form__container">
+      <div id="category__create" class="form__element">
+        <h2>Crear categoría</h2>
+        <div class="form-group">
+          <label for="category__create_name">Nombre</label>
+          <input type="text" class="form-control" id="category__create_name" />
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <label for="category__create_minorista">Minorista</label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="category__create_minorista"
+            />
+          </div>
+          <div class="form-check">
+            <label for="category__create_mayorista">Mayorista</label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="category__create_mayorista"
+            />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success" id="btn__create_category">
+          Crear
+        </button>
+      </div>
+
+      <div id="category__edit" class="form__element">
+        <div id="category__edit_before">
+          <h2>Modificar categoría</h2>
+          <div class="form-group">
+            <label for="category__edit_search_name">Buscar por nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="category__edit_search_name"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-success"
+            id="btn__edit_category_search"
+          >
+            Buscar
+          </button>
+        </div>
+        <div class="form__element_after" id="category__edit_after">
+          <div class="form-group">
+            <label for="category__edit_name">Nombre</label>
+            <input type="text" class="form-control" id="category__edit_name" />
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <label for="category__edit_minorista">Minorista</label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="category__edit_minorista"
+              />
+            </div>
+            <div class="form-check">
+              <label for="category__edit_mayorista">Mayorista</label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="category__edit_mayorista"
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-warning" id="btn__edit_category">
+            Modificar
+          </button>
+        </div>
+      </div>
+
+      <div id="category__delete" class="form__element">
+        <h2>Eliminar categoría</h2>
+        <div class="form-group">
+          <label for="category__delete_name">Eliminar por nombre</label>
+          <input type="text" class="form-control" id="category__delete_name" />
+        </div>
+        <button type="submit" class="btn btn-danger" id="btn__delete_category">
+          Eliminar
+        </button>
+      </div>
+
+      <div id="category__list" class="form__element">
+        <h2>Lista de categorías</h2>
+        <ul id="category__list_ul"></ul>
+      </div>
+
+      <div id="product__create" class="form__element">
+        <h2>Crear producto</h2>
+        <div class="form-group">
+          <label for="product__create_name">Nombre</label>
+          <input type="text" class="form-control" id="product__create_name" />
+        </div>
+        <div class="form-group">
+          <label for="product__create_description">Descripción</label>
+          <textarea
+            class="form-control"
+            id="product__create_description"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <label for="product__create_stock">Stock</label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="product__create_stock"
+            />
+          </div>
+          <div class="form-check">
+            <label for="product__create_minorista">Minorista</label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="product__create_minorista"
+            />
+          </div>
+          <div class="form-check">
+            <label for="product__create_mayorista">Mayorista</label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="product__create_mayorista"
+            />
+          </div>
+          <div class="form-check">
+            <label for="product__create_suggest">Recomendado</label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="product__create_suggest"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="product__create_img1">Imagen</label>
+          <input type="text" class="form-control" id="product__create_img1" />
+          <label for="product__create_img2">Imagen 2</label>
+          <input type="text" class="form-control" id="product__create_img2" />
+          <label for="product__create_img3">Imagen 3</label>
+          <input type="text" class="form-control" id="product__create_img3" />
+          <label for="product__create_img4">Imagen 4</label>
+          <input type="text" class="form-control" id="product__create_img4" />
+          <label for="product__create_img5">Imagen 5</label>
+          <input type="text" class="form-control" id="product__create_img5" />
+        </div>
+        <div class="form-group">
+          <label for="product__create_category">Categoría</label>
+          <select
+            name="Categoria"
+            class="form-control"
+            id="product__create_category"
+            onchange="showElementCategory(event)"
+          ></select>
+        </div>
+        <div class="form-group" id="product__category__create_text_after">
+          <label for="product__create_new_category">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="product__create_new_category"
+          />
+        </div>
+        <button type="submit" class="btn btn-success" id="btn__create_product">
+          Crear
+        </button>
+      </div>
+
+      <div id="product__edit" class="form__element">
+        <div id="product__edit_before">
+          <h2>Modificar producto</h2>
+          <div class="form-group">
+            <label for="product__edit_search_name">Buscar por nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="product__edit_search_name"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-success"
+            id="btn__edit_product_search"
+          >
+            Buscar
+          </button>
+        </div>
+        <div class="form__element_after" id="product__edit_after">
+          <div class="form-group">
+            <label for="product__edit_name">Nombre</label>
+            <input type="text" class="form-control" id="product__edit_name" />
+          </div>
+          <div class="form-group">
+            <label for="product__edit_description">Descripción</label>
+            <textarea
+              class="form-control"
+              id="product__edit_description"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <label for="product__edit_stock">Stock</label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="product__edit_stock"
+              />
+            </div>
+            <div class="form-check">
+              <label for="product__edit_minorista">Minorista</label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="product__edit_minorista"
+              />
+            </div>
+            <div class="form-check">
+              <label for="product__edit_mayorista">Mayorista</label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="product__edit_mayorista"
+              />
+            </div>
+            <div class="form-check">
+              <label for="product__edit_suggest">Recomendado</label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="product__edit_suggest"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="product__edit_img1">Imagen</label>
+            <input type="text" class="form-control" id="product__edit_img1" />
+            <label for="product__edit_img2">Imagen 2</label>
+            <input type="text" class="form-control" id="product__edit_img2" />
+            <label for="product__edit_img3">Imagen 3</label>
+            <input type="text" class="form-control" id="product__edit_img3" />
+            <label for="product__edit_img4">Imagen 4</label>
+            <input type="text" class="form-control" id="product__edit_img4" />
+            <label for="product__edit_img5">Imagen 5</label>
+            <input type="text" class="form-control" id="product__edit_img5" />
+          </div>
+          <div class="form-group">
+            <label for="product__edit_category">Categoría</label>
+            <select
+              name="Categoria"
+              class="form-control"
+              id="product__edit_category"
+              onchange="showElementCategory(event)"
+            ></select>
+          </div>
+          <div class="form-group" id="product__category__edit_text_after">
+            <label for="product__edit_new_category">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="product__edit_new_category"
+            />
+          </div>
+          <button type="submit" class="btn btn-warning" id="btn__edit_product">
+            Modificar
+          </button>
+        </div>
+      </div>
+
+      <div id="product__delete" class="form__element">
+        <h2>Eliminar producto</h2>
+        <div class="form-group">
+          <label for="product__delete_name">Eliminar por nombre</label>
+          <input type="text" class="form-control" id="product__delete_name" />
+        </div>
+        <button type="submit" class="btn btn-danger" id="btn__delete_product">
+          Eliminar
+        </button>
+      </div>
+
+      <div id="product__list" class="form__element">
+        <h2>Lista de productos</h2>
+        <ul id="product__list_ul"></ul>
+      </div>
+
+      <div id="contact__edit" class="form__element">
+        <h2>Modificar contacto</h2>
+        <div class="form-group">
+          <label for="contact__edit_phone">Teléfono</label>
+          <input type="text" class="form-control" id="contact__edit_phone" />
+        </div>
+        <div class="form-group">
+          <label for="contact__edit_email">Email</label>
+          <input type="email" class="form-control" id="contact__edit_email" />
+        </div>
+        <div class="form-group">
+          <label for="contact__edit_location">Dirección</label>
+          <input type="text" class="form-control" id="contact__edit_location" />
+        </div>
+        <div class="form-group">
+          <label for="contact__edit_description">Descripción</label>
+          <textarea
+            class="form-control"
+            id="contact__edit_description"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="contact__edit_social1">Red social</label>
+          <input type="text" class="form-control" id="contact__edit_social1" />
+          <label for="contact__edit_social1_text">Texto a mostrar</label>
+          <input
+            type="text"
+            class="form-control"
+            id="contact__edit_social1_text"
+          />
+        </div>
+        <div class="form-group">
+          <label for="contact__edit_social2">Red social 2</label>
+          <input type="text" class="form-control" id="contact__edit_social2" />
+          <label for="contact__edit_social2_text">Texto a mostrar</label>
+          <input
+            type="text"
+            class="form-control"
+            id="contact__edit_social2_text"
+          />
+        </div>
+        <div class="form-group">
+          <label for="contact__edit_social3">Red social 3</label>
+          <input type="text" class="form-control" id="contact__edit_social3" />
+          <label for="contact__edit_social3_text">Texto a mostrar</label>
+          <input
+            type="text"
+            class="form-control"
+            id="contact__edit_social3_text"
+          />
+        </div>
+        <button type="submit" class="btn btn-warning" id="btn__edit_contact">
+          Modificar
+        </button>
+      </div>
+
+      <div id="user__create" class="form__element">
+        <h2>Crear usuario</h2>
+        <div class="form-group">
+          <label for="user__create_name">Nombre</label>
+          <input type="text" class="form-control" id="user__create_name" />
+        </div>
+        <div class="form-group">
+          <label for="user__create_pass">Contraseña</label>
+          <input type="password" class="form-control" id="user__create_pass" />
+        </div>
+        <div class="form-group">
+          <label for="user__create_contact">Contacto</label>
+          <input type="text" class="form-control" id="user__create_contact" />
+        </div>
+        <div class="form-group">
+          <label for="user__create_type">Tipo</label>
+          <select
+            name="Tipo"
+            class="form-control user__type"
+            id="user__create_type"
+          >
+            <option value="3">Jefe</option>
+            <option value="2">Encargado</option>
+            <option value="1">Mayorista</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-success" id="btn__create_user">
+          Crear
+        </button>
+      </div>
+
+      <div id="user__edit" class="form__element">
+        <div id="user__edit_before">
+          <h2>Modificar usuario</h2>
+          <div class="form-group">
+            <label for="user__edit_search_name">Buscar por nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="user__edit_search_name"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-success"
+            id="btn__edit_user_search"
+          >
+            Buscar
+          </button>
+        </div>
+        <div class="form__element_after" id="user__edit_after">
+          <div class="form-group">
+            <label for="user__edit_name">Nombre</label>
+            <input type="text" class="form-control" id="user__edit_name" />
+          </div>
+          <div class="form-group">
+            <label for="user__edit_pass">Contraseña</label>
+            <input type="password" class="form-control" id="user__edit_pass" />
+          </div>
+          <div class="form-group">
+            <label for="user__edit_contact">Contacto</label>
+            <input type="text" class="form-control" id="user__edit_contact" />
+          </div>
+          <div class="form-group">
+            <label for="user__edit_type">Tipo</label>
+            <select
+              name="Tipo"
+              class="form-control user__type"
+              id="user__edit_type"
+            >
+              <option value="3">Jefe</option>
+              <option value="2">Encargado</option>
+              <option value="1">Mayorista</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-warning" id="btn__edit_user">
+            Modificar
+          </button>
+        </div>
+      </div>
+
+      <div id="user__delete" class="form__element">
+        <h2>Eliminar usuario</h2>
+        <div class="form-group">
+          <label for="user__delete_name">Eliminar por nombre</label>
+          <input type="text" class="form-control" id="user__delete_name" />
+        </div>
+        <button type="submit" class="btn btn-danger" id="btn__delete_user">
+          Eliminar
+        </button>
+      </div>
+
+      <div id="user__list" class="form__element">
+        <h2>Lista de usuarios</h2>
+        <ul id="user__list_ul"></ul>
+      </div>
+    </section>
+
+    <button id="btn__logout" class="btn btn-danger">Desconectarse</button>
+
+    <script src="./scripts/admin.js"></script>
+  </body>
+</html>

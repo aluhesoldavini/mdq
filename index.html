@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./shared/styles/bootstrap.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="icon" type="image/x-icon" href="./shared/images/favicon.ico" />
+
+    <link rel="stylesheet" href="./shared/styles/reset.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <title>Panel Minorista</title>
+  </head>
+  <body>
+    <nav id="top__navbar">
+      <section id="top__navigation">
+        <div>
+          <a href="#" id="top__nav_btn_minor">Minorista</a>
+        </div>
+        <div>
+          <a href="#">
+            <img src="./shared/images/logo.jpg" id="top__nav_logo" />
+          </a>
+        </div>
+        <div>
+          <a href="#mayorista" id="top__nav_btn_mayor">Mayorista</a>
+        </div>
+      </section>
+
+      <div id="search__bar">
+        <label for="search__bar_box"></label>
+        <input
+          type="search"
+          class="form-control"
+          id="search__bar_box"
+          name="search__bar_box"
+          placeholder="Buscar por nombre"
+          maxlength="48"
+        />
+        <button type="submit" id="search__bar_button">
+          <span><i class="fas fa-search"></i></span>
+        </button>
+      </div>
+
+      <div id="category">
+        <div id="category__list">
+          <ul id="category__list_ul"></ul>
+        </div>
+        <button type="button" id="category__button_toggle">
+          <i class="fa-solid fa-angle-down" id="category__button_icon1"></i>
+          <i class="fa-solid fa-angle-up" id="category__button_icon2"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div style="padding-top: 170px"></div>
+
+    <div class="alert alert-danger" id="alert_error" role="alert"></div>
+
+    <main id="product__container"></main>
+
+    <button id="contact__button"></button>
+
+    <div id="footer__container">
+      <object data="./shared/footer.html" width="100%" height="100%"></object>
+    </div>
+
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

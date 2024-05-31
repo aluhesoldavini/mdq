@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../shared/styles/bootstrap.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" type="image/x-icon" href="../shared/images/favicon.ico" />
+
+    <link rel="stylesheet" href="../shared/styles/reset.css" />
+    <link rel="stylesheet" href="./styles/product.css" />
+
+    <title>Producto</title>
+  </head>
+  <body>
+    <section id="top__navigation">
+      <div>
+        <a href="/index.html" class="top__nav_grid_item">Minorista</a>
+      </div>
+      <div>
+        <a href="#">
+          <img
+            src="../shared/images/logo.jpg"
+            class="top__nav_grid_item"
+            id="top__nav_logo"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="/index.html#mayorista" class="top__nav_grid_item">Mayorista</a>
+      </div>
+    </section>
+
+    <div class="alert alert-success" id="alert_success" role="alert"></div>
+    <div class="alert alert-danger" id="alert_error" role="alert"></div>
+
+    <div class="card" id="product">
+      <div id="product__top">
+        <div id="product__top__images"></div>
+      </div>
+
+      <div id="product__main_image"></div>
+
+      <div class="card-body">
+        <h3 id="product__title"></h3>
+        <p class="card-text" id="product__description"></p>
+      </div>
+    </div>
+
+    <div id="footer__container">
+      <object data="../shared/footer.html" width="100%" height="100%"></object>
+    </div>
+
+    <script src="./scripts/product.js"></script>
+  </body>
+</html>
